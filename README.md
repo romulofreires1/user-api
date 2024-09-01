@@ -53,6 +53,7 @@ User API é uma aplicação construída com NestJS, TypeORM e PostgreSQL para ge
    Para garantir que a estrutura do banco de dados esteja atualizada:
 
    ```bash
+   npx typeorm migration:generate ./migrations/CreateUserTable -d ./dist/data-source.js
    npm run build
    npx typeorm migration:run -d ./dist/data-source.js
    ```

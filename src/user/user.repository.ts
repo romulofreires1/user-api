@@ -15,19 +15,14 @@ export class UserRepository extends Repository<User> {
   async createUser(
     username: string,
     email: string,
-    password: string,
+    passwordHash: string,
   ): Promise<User> {
-    const user = this.create({ username, email, password });
+    const user = this.create({ username, email, passwordHash });
     return this.save(user);
   }
 
-  async updateUser(
-    id: number,
-    username: string,
-    email: string,
-    password: string,
-  ): Promise<User> {
-    await this.update(id, { username, email, password });
+  async updateUser(id: number, username: string, email: string): Promise<User> {
+    await this.update(id, { username, email });
     return this.findOne({ where: { id } });
   }
 
