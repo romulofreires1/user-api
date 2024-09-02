@@ -5,9 +5,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './user.entity';
 import { UserResponseDto } from './dto/user-response.dto';
 import { EncryptionService } from './encryption.service';
+import { CustomLoggerService } from 'src/common/logger/custom-logger.service';
 
 @Injectable()
 export class UserService {
+  private readonly logger = CustomLoggerService.getLogger('RequestLogger');
+
   constructor(
     private readonly userRepository: UserRepository,
     private readonly encryptionService: EncryptionService,
@@ -26,6 +29,7 @@ export class UserService {
     const user = await this.userRepository.findOne({ where: { id } });
 
     if (!user) {
+      this.logger.error('User not found');
       throw new Error('User not found');
     }
 
