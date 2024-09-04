@@ -21,12 +21,12 @@ export class UserRepository extends Repository<User> {
     return this.save(user);
   }
 
-  async updateUser(id: number, username: string, email: string): Promise<User> {
+  async updateUser(id: string, username: string, email: string): Promise<User> {
     await this.update(id, { username, email });
     return this.findOne({ where: { id } });
   }
 
-  async deleteUser(id: number): Promise<void> {
+  async deleteUser(id: string): Promise<void> {
     await this.delete(id);
   }
 }

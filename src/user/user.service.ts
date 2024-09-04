@@ -40,7 +40,7 @@ export class UserService {
     });
   }
 
-  async findOne(id: number): Promise<UserResponseDto> {
+  async findOne(id: string): Promise<UserResponseDto> {
     this.userFindOneCounter.inc();
 
     const user = await this.userRepository.findOne({ where: { id } });
@@ -73,7 +73,7 @@ export class UserService {
   }
 
   async update(
-    id: number,
+    id: string,
     updateUserDto: UpdateUserDto,
   ): Promise<UserResponseDto> {
     this.userUpdateCounter.inc();
@@ -89,7 +89,7 @@ export class UserService {
     return { id, username, email };
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: string): Promise<void> {
     this.userRemoveCounter.inc();
 
     await this.userRepository.deleteUser(id);

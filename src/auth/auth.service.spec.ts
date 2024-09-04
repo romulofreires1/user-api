@@ -37,7 +37,7 @@ describe('AuthService', () => {
   describe('validateUser', () => {
     it('deve retornar o usuário autenticado se as credenciais estiverem corretas', async () => {
       const mockUser = {
-        id: 1,
+        id: 'a3bb189e-8bf9-4f1f-b88c-0dfc9a8f1bd5',
         username: 'john_doe',
         email: 'john.doe@example.com',
         passwordHash: await bcrypt.hash('password123', 10),
@@ -71,7 +71,7 @@ describe('AuthService', () => {
 
     it('deve retornar null se a senha estiver incorreta', async () => {
       const mockUser = {
-        id: 1,
+        id: 'a3bb189e-8bf9-4f1f-b88c-0dfc9a8f1bd5',
         username: 'john_doe',
         email: 'john.doe@example.com',
         passwordHash: await bcrypt.hash('password123', 10),
@@ -92,7 +92,7 @@ describe('AuthService', () => {
   describe('login', () => {
     it('deve retornar um token de acesso ao usuário autenticado', async () => {
       const mockUser: AuthenticatedUser = {
-        userId: 1,
+        userId: 'a3bb189e-8bf9-4f1f-b88c-0dfc9a8f1bd5',
         username: 'john_doe',
         email: 'john.doe@example.com',
       };
