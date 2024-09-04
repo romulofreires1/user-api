@@ -36,12 +36,22 @@ User API é uma aplicação construída com NestJS, TypeORM e PostgreSQL para ge
 
 3. **Configure o Banco de Dados**
 
-   Crie um banco de dados PostgreSQL chamado `userdb` e configure suas credenciais de acesso no arquivo `.env`:
+   Crie um banco de dados PostgreSQL chamado `userdb` e configure suas credenciais de acesso nos arquivos `.env` e `.env.docker`:
 
    **.env**
 
    ```plaintext
    DATABASE_HOST=localhost
+   DATABASE_PORT=5432
+   DATABASE_USER=postgres
+   DATABASE_PASSWORD=postgres
+   DATABASE_NAME=userdb
+   ```
+
+   **.env.docker**
+
+   ```plaintext
+   DATABASE_HOST=postgres
    DATABASE_PORT=5432
    DATABASE_USER=postgres
    DATABASE_PASSWORD=postgres
@@ -56,14 +66,6 @@ User API é uma aplicação construída com NestJS, TypeORM e PostgreSQL para ge
    npx typeorm migration:generate ./migrations/CreateUserTable -d ./dist/data-source.js
    npm run build
    npx typeorm migration:run -d ./dist/data-source.js
-   ```
-
-5. **Inicie a Aplicação**
-
-   Inicie a aplicação em modo de desenvolvimento:
-
-   ```bash
-   yarn start:dev
    ```
 
 ## Executando a API
