@@ -5,9 +5,9 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './user.entity';
 import { UserResponseDto } from './dto/user-response.dto';
 import { EncryptionService } from './encryption.service';
-import { CustomLoggerService } from 'src/common/logger/custom-logger.service';
 import { InjectMetric } from '@willsoto/nestjs-prometheus';
 import { Counter } from 'prom-client';
+import { CustomLoggerService } from '../common/logger/custom-logger.service';
 
 @Injectable()
 export class UserService {

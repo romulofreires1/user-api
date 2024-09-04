@@ -2,8 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { UserRepository } from './user.repository';
 import { EncryptionService } from './encryption.service';
+import { CustomLoggerService } from '../common/logger/custom-logger.service';
 
-// Criação de um mock de repositório para o teste
 const mockUserRepository = {
   create: jest.fn(),
   save: jest.fn(),
@@ -11,9 +11,28 @@ const mockUserRepository = {
   findOne: jest.fn(),
 };
 
+const mockPrometheusCounter = {
+  inc: jest.fn(),
+};
+
 const mockEncryptionService = {
-  hashPassword: jest.fn().mockResolvedValue('hashed_password'), // Retorna um hash previsível
+  hashPassword: jest.fn().mockResolvedValue('hashed_password'),
   comparePasswords: jest.fn(),
+};
+
+const mockLoggerService = {
+  log: jest.fn(),
+  error: jest.fn(),
+  warn: jest.fn(),
+  debug: jest.fn(),
+  verbose: jest.fn(),
+  getLogger: jest.fn().mockReturnValue({
+    log: jest.fn(),
+    error: jest.fn(),
+    warn: jest.fn(),
+    debug: jest.fn(),
+    verbose: jest.fn(),
+  }),
 };
 
 describe('UserService', () => {
@@ -30,6 +49,31 @@ describe('UserService', () => {
         {
           provide: EncryptionService,
           useValue: mockEncryptionService,
+        },
+        { provide: CustomLoggerService, useValue: mockLoggerService },
+        {
+          provide: 'PROM_METRIC_USER_CREATED_TOTAL',
+          useValue: mockPrometheusCounter,
+        },
+        {
+          provide: 'PROM_METRIC_USER_FIND_ALL_TOTAL',
+          useValue: mockPrometheusCounter,
+        },
+        {
+          provide: 'PROM_METRIC_USER_FIND_ONE_TOTAL',
+          useValue: mockPrometheusCounter,
+        },
+        {
+          provide: 'PROM_METRIC_USER_UPDATE_TOTAL',
+          useValue: mockPrometheusCounter,
+        },
+        {
+          provide: 'PROM_METRIC_USER_REMOVE_TOTAL',
+          useValue: mockPrometheusCounter,
+        },
+        {
+          provide: 'PROM_METRIC_USER_FIND_BY_EMAIL_TOTAL',
+          useValue: mockPrometheusCounter,
         },
       ],
     }).compile();
