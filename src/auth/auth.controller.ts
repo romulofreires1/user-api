@@ -1,7 +1,8 @@
 import { Controller, Post, UseGuards, Request, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
+import { AuthenticatedUser } from './auth-user.interface';
 import { JwtAuthGuard } from './jwt-auth.guard.ts';
 
 @ApiTags('auth')
@@ -12,7 +13,10 @@ export class AuthController {
   @Post('login')
   @ApiBody({ type: LoginDto })
   async login(@Body() body: LoginDto) {
-    const user = await this.authService.validateUser(body.email, body.password);
+    const user: AuthenticatedUser | null = await this.authService.validateUser(
+      body.email,
+      body.password,
+    );
     if (!user) {
       return { message: 'Invalid credentials' };
     }

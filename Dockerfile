@@ -1,6 +1,6 @@
-FROM node:18-alpine
+FROM node:20.17.0-slim
 
-RUN apk add --no-cache curl bash
+RUN apt-get update && apt-get install -y curl bash
 
 WORKDIR /usr/src/app
 
