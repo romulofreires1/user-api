@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('API para gerenciamento de usuários')
     .setVersion('1.0')
     .addTag('users')
+    .addBearerAuth()
     .addGlobalParameters({
       name: 'x-request-id',
       in: 'header',

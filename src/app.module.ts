@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
 import { CustomLoggerService } from './common/logger/custom-logger.service';
 import { RequestContextMiddleware } from './common/middleware/request-context.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { RequestContextMiddleware } from './common/middleware/request-context.mi
       }),
     }),
     UserModule,
+    AuthModule,
   ],
   providers: [CustomLoggerService],
 })
