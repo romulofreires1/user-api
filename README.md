@@ -20,7 +20,7 @@ Com suporte tanto para ambientes de desenvolvimento local quanto para execução
 
 ### Pré-requisitos
 
-- Node.js v18+
+- Node.js v20+
 - npm (ou yarn)
 - PostgreSQL
 - Docker (opcional para rodar via contêineres)
