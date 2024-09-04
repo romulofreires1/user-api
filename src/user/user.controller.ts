@@ -10,7 +10,6 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './user.entity';
 import { UserResponseDto } from './dto/user-response.dto';
 
 @Controller('users')
@@ -36,7 +35,7 @@ export class UserController {
   async update(
     @Param('id') id: number,
     @Body() updateUserDto: UpdateUserDto,
-  ): Promise<User> {
+  ): Promise<UserResponseDto> {
     return this.userService.update(id, updateUserDto);
   }
 

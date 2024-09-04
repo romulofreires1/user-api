@@ -72,11 +72,21 @@ export class UserService {
     return { id, username, email };
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+  async update(
+    id: number,
+    updateUserDto: UpdateUserDto,
+  ): Promise<UserResponseDto> {
     this.userUpdateCounter.inc();
 
-    const { username, email } = updateUserDto;
-    return this.userRepository.updateUser(id, username, email);
+    const updatedUser = await this.userRepository.updateUser(
+      id,
+      updateUserDto.username,
+      updateUserDto.email,
+    );
+
+    const { username, email } = updatedUser;
+
+    return { id, username, email };
   }
 
   async remove(id: number): Promise<void> {
