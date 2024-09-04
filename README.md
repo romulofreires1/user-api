@@ -3,6 +3,12 @@
 
 User API é uma aplicação construída com NestJS, TypeORM e PostgreSQL para gerenciar usuários. A API oferece funcionalidades básicas de CRUD (Create, Read, Update, Delete) para usuários e está configurada para rodar tanto localmente quanto dentro de contêineres Docker.
 
+Além das operações CRUD, a User API implementa autenticação baseada em JWT (JSON Web Token) para garantir a segurança das rotas protegidas. A autenticação permite que os usuários façam login com suas credenciais e recebam um token JWT, que deve ser utilizado para acessar endpoints protegidos da API. O módulo de autenticação inclui a validação de credenciais de usuário usando hashing seguro de senhas com bcrypt e a geração de tokens JWT com o JwtService do NestJS.
+
+A aplicação também está configurada com métricas Prometheus para monitorar o desempenho e uso da API, oferecendo uma visão abrangente da saúde e do comportamento da aplicação. A integração com Swagger facilita a documentação e a interação com a API, permitindo que desenvolvedores explorem e testem os endpoints diretamente através de uma interface amigável.
+
+Com suporte tanto para ambientes de desenvolvimento local quanto para execução em ambientes Dockerizados, a User API oferece flexibilidade e escalabilidade para diferentes cenários de implantação e uso.
+
 ## Tecnologias Utilizadas
 
 - **NestJS**: Framework para construção de aplicações Node.js escaláveis.
