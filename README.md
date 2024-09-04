@@ -9,6 +9,10 @@ A aplicação também está configurada com métricas Prometheus para monitorar 
 
 Com suporte tanto para ambientes de desenvolvimento local quanto para execução em ambientes Dockerizados, a User API oferece flexibilidade e escalabilidade para diferentes cenários de implantação e uso.
 
+<div align="center">
+  <video src="static/user-api.mp4" />
+</div>
+
 ## Tecnologias Utilizadas
 
 - **NestJS**: Framework para construção de aplicações Node.js escaláveis.
