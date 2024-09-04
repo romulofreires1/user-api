@@ -9,7 +9,8 @@ A aplicação também está configurada com métricas Prometheus para monitorar 
 
 Com suporte tanto para ambientes de desenvolvimento local quanto para execução em ambientes Dockerizados, a User API oferece flexibilidade e escalabilidade para diferentes cenários de implantação e uso.
 
-<video controls src="static/user-api.mp4" title="Title"></video>
+[![User API Video](static/user-api.png)](static/user-api.mp4)
+
 
 
 ## Tecnologias Utilizadas
